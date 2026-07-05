@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #2563eb;      /* main blue - buttons, links, active states */
+  --color-primary-dark: #1e40af; /* hover states */
+  --color-secondary: #0ea5e9;    /* sky blue - accents */
+  --color-accent: #f59e0b;       /* amber - CTAs, highlights */
+  --color-neutral-dark: #1f2937; /* dark text, footer bg */
+  --color-neutral-light: #f9fafb;/* page backgrounds */
+}
