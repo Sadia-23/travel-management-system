@@ -9,6 +9,8 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
+import Hotels from './pages/Hotels'
+import HotelDetails from './pages/HotelDetails'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -23,6 +25,9 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+
+              <Route path="/hotels" element={<Hotels />} />
+              <Route path="/hotels/:id" element={<HotelDetails />} />
 
               <Route path="/admin" element={<AdminLogin />} />
               <Route path="/admin/dashboard" element={
