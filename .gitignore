@@ -2,6 +2,3 @@ node_modules
 dist
 .env
 .DS_Store
-backend/config/gemini.php
-backend/config/groq.php
-backend/config/openai.php
