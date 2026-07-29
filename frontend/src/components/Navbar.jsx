@@ -20,10 +20,19 @@ function Navbar() {
       <div className="flex items-center gap-6">
         <Link to="/" className="text-gray-700 hover:text-primary-dark">Home</Link>
         <Link to="/hotels" className="text-gray-700 hover:text-primary-dark">Hotels</Link>
+        <Link to="/transport" className="text-gray-700 hover:text-primary-dark">Transport</Link>
+        <Link to="/ai-planner" className="text-gray-700 hover:text-primary-dark">AI Planner</Link>
         <Link to="/about" className="text-gray-700 hover:text-primary-dark">About</Link>
 
         {user ? (
           <div className="flex items-center gap-4">
+            {user.role === 'traveler' && (
+              <Link to="/dashboard" className="text-gray-700 hover:text-primary-dark">Dashboard</Link>
+            )}
+            {user.role === 'provider' && (
+              <Link to="/provider/dashboard" className="text-gray-700 hover:text-primary-dark">Provider Dashboard</Link>
+            )}
+            
             <span className="text-neutral-dark text-sm">Hi, {user.full_name}</span>
             <button
               onClick={handleLogout}

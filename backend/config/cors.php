@@ -1,7 +1,8 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:5173");
+$allowed_origin = getenv("FRONTEND_URL") ?: "http://localhost:5173";
+header("Access-Control-Allow-Origin: $allowed_origin");
 header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -12,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 session_set_cookie_params([
     'lifetime' => 86400,
     'path' => '/',
-    'samesite' => 'Lax'
+    'samesite' => 'None',
+    'secure' => true
 ]);
 session_start();
 ?>

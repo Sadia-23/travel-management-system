@@ -53,20 +53,17 @@ try {
         exit;
     }
 
-    // NOTE: the bookings table only stores a single travel_date, not a
-    // date range or a nights column, so `nights` is used to compute
-    // total_price here but is not itself persisted. Flagging in case
-    // a future migration should add a `nights` (or check_in/check_out) column.
     $total_price = $hotel['price_per_night'] * $nights;
 
     $stmt = $conn->prepare(
-        "INSERT INTO bookings (user_id, booking_type, hotel_id, travel_date, total_price, status)
-         VALUES (:user_id, 'Hotel', :hotel_id, :travel_date, :total_price, 'Upcoming')"
+        "INSERT INTO bookings (user_id, booking_type, hotel_id, travel_date, nights, total_price, status)
+         VALUES (:user_id, 'Hotel', :hotel_id, :travel_date, :nights, :total_price, 'Upcoming')"
     );
     $stmt->execute([
         'user_id'      => $_SESSION['user_id'],
         'hotel_id'     => $hotel_id,
         'travel_date'  => $travel_date,
+        'nights'       => $nights,
         'total_price'  => $total_price,
     ]);
 

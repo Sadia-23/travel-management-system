@@ -1,10 +1,156 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 @theme {
-  --color-primary: #2563eb;      /* main blue - buttons, links, active states */
-  --color-primary-dark: #1e40af; /* hover states */
-  --color-secondary: #0ea5e9;    /* sky blue - accents */
-  --color-accent: #f59e0b;       /* amber - CTAs, highlights */
-  --color-neutral-dark: #1f2937; /* dark text, footer bg */
-  --color-neutral-light: #f9fafb;/* page backgrounds */
+  /* Brand — muted sage & clay, warmed with gold. A boutique-travel palette:
+     calm enough for planning, warm enough for a booking confirmation. */
+  --color-primary: #4d7c6f;
+  --color-primary-dark: #3a5f54;
+  --color-primary-light: #e3ede9;
+  --color-secondary: #b8663f;
+  --color-secondary-dark: #96502f;
+  --color-secondary-light: #f5e6dd;
+  --color-accent: #b8863a;
+  --color-accent-dark: #9c7130;
+  --color-accent-light: #f3e8d2;
+
+  /* Semantic feedback */
+  --color-success: #16a34a;
+  --color-success-bg: #ecfdf3;
+  --color-success-text: #15803d;
+  --color-danger: #dc2626;
+  --color-danger-bg: #fef2f2;
+  --color-danger-text: #b91c1c;
+  --color-warning: #d97706;
+  --color-warning-bg: #fffbeb;
+  --color-warning-text: #92400e;
+  --color-info: #0891b2;
+  --color-info-bg: #ecfeff;
+  --color-info-text: #0e7490;
+
+  /* Neutrals — warm, low-glare */
+  --color-neutral-dark: #33312c;
+  --color-neutral-light: #f7f5f0;
+  --color-surface: #ffffff;
+  --color-border: #e2ddd2;
+
+  /* Type */
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgba(51, 49, 44, 0.06), 0 4px 14px rgba(51, 49, 44, 0.06);
+  --shadow-card-hover: 0 6px 20px rgba(51, 49, 44, 0.10), 0 2px 6px rgba(51, 49, 44, 0.08);
+  --shadow-pop: 0 20px 50px rgba(51, 49, 44, 0.22), 0 4px 14px rgba(51, 49, 44, 0.10);
+
+  --animate-fade-in: fade-in 0.35s ease-out both;
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-color: var(--color-neutral-light);
+  }
+  50% {
+    background-color: var(--color-border);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-neutral-dark);
+    background-color: var(--color-neutral-light);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-light);
+    color: var(--color-neutral-dark);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-neutral-light);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #cfc7b4;
+  }
+}
+
+@layer utilities {
+  /* Ticket / boarding-pass divider — the signature motif carried through the
+     hero, section breaks, and card seams so the "travel document" idea
+     shows up structurally, not just decoratively. */
+  .ticket-divider {
+    position: relative;
+    border-top: 1px dashed var(--color-border);
+  }
+  .ticket-divider::before,
+  .ticket-divider::after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    background: var(--color-neutral-light);
+  }
+  .ticket-divider::before {
+    left: -8px;
+  }
+  .ticket-divider::after {
+    right: -8px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }

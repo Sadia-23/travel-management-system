@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 
-export default function BookingModal({ hotel, onClose }) {
+export default function TransportBookingModal({ transport, onClose }) {
   const [travelDate, setTravelDate] = useState('');
-  const [nights, setNights] = useState(1);
+  const [seats, setSeats] = useState(1);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(null);
   const navigate = useNavigate();
 
-  const total = hotel.price_per_night * nights;
+  const total = transport.price * seats;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,10 +23,10 @@ export default function BookingModal({ hotel, onClose }) {
 
     setSubmitting(true);
     try {
-      const res = await api.post('/booking.php', {
-        hotel_id: hotel.hotel_id,
+      const res = await api.post('/transport_booking.php', {
+        transport_id: transport.transport_id,
         travel_date: travelDate,
-        nights,
+        seats,
       });
 
       if (res.data.success) {
@@ -36,7 +36,7 @@ export default function BookingModal({ hotel, onClose }) {
       }
     } catch (err) {
       if (err.response?.status === 401) {
-        setError('Please log in to book this hotel.');
+        setError('Please log in to book this transport.');
       } else {
         setError(err.response?.data?.error || 'Booking failed.');
       }
@@ -73,16 +73,16 @@ export default function BookingModal({ hotel, onClose }) {
               Total: ৳{success.total_price}
             </p>
             <button
-              onClick={() => navigate('/hotels')}
+              onClick={() => navigate('/transport')}
               className="mt-6 bg-primary text-white text-sm font-medium px-5 py-2 rounded-md hover:bg-primary-dark transition-colors"
             >
-              Browse more hotels
+              Browse more transport
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <h2 className="text-xl font-bold text-neutral-dark">
-              Book {hotel.hotel_name}
+              Book {transport.company_name} ({transport.source} → {transport.destination})
             </h2>
 
             <label className="flex flex-col gap-1 text-sm text-gray-600">
@@ -98,12 +98,13 @@ export default function BookingModal({ hotel, onClose }) {
             </label>
 
             <label className="flex flex-col gap-1 text-sm text-gray-600">
-              Nights
+              Seats
               <input
                 type="number"
                 min="1"
-                value={nights}
-                onChange={(e) => setNights(Math.max(1, parseInt(e.target.value, 10) || 1))}
+                max={transport.available_seats}
+                value={seats}
+                onChange={(e) => setSeats(Math.max(1, parseInt(e.target.value, 10) || 1))}
                 className={inputClass}
               />
             </label>
