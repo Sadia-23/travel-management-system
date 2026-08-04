@@ -84,61 +84,64 @@ deployment, and collaborative development using Git and GitHub.
 
 ## Technology Stack
 
-  Layer             Technology
-  ----------------- ------------------------------------
-  Frontend          HTML5, CSS3, JavaScript, Bootstrap
-  Backend           PHP
-  Database          MySQL (Aiven)
-  AI                Grok API (Expired, now in offline mode)
-  Deployment        Vercel, Render
-  Version Control   Git & GitHub
-  DB Tool           HeidiSQL
+  |Layer            | Technology                         |
+  |-----------------|------------------------------------|
+  |`Frontend`         |`HTML5, CSS3, JavaScript, Bootstrap`|
+  |`Backend`          |`PHP`|
+  |`Database`         |`MySQL (Aiven)`|
+  |`AI`               |`Grok API (Expired, now in offline mode)`|
+  |`Deployment`       |`Vercel, Render`|
+  |`Version Control`  |`Git & GitHub`|
+  |`DB Tool`          |`HeidiSQL`|
 
 ------------------------------------------------------------------------
 
 ## Deployment Status
 
-  Component   Status    Platform
-  ----------- --------- -------------
-  Frontend    ✅ Live   Vercel
-  Backend     ✅ Live   Render
-  Database    ✅ Live   Aiven MySQL
+  | Component | Status | Platform |
+  |-----------|---------|---------|
+  |`Frontend`| `Live` | `Vercel` |
+  |`Backend`| `Live` | `Render` |
+  |`Database`| `Live` | `Aiven MySQL` |
 
 ------------------------------------------------------------------------
 
 ## Live Demo
-
-Replace these with your production URLs if different.
-
 -   **Frontend:** https://travel-management-system-neon.vercel.app/
 
 ------------------------------------------------------------------------
 
 ## Demo Accounts
+## 👤 Traveler Accounts
 
-### Traveler
+| Email | Password |
+|-------|----------|
+| `layla@test.com` | `test123` | 
+| `samiha@test.com` | `test123` |
+| `maliha@test.com` | `test123` |
+| `putul@test.com` | `test123` |
 
-  Email             Password
-  ----------------- -----------
-  layla@test.com    `test123`
-  samiha@test.com   `test123`
-  maliha@test.com   `test123`
-  putul@test.com    `test123`
+---
 
-### Service Provider
+## 🏨 Service Provider Accounts
 
-  Email                Password
-  -------------------- -----------
-  provider1@test.com   `test123`
-  provider2@test.com   `test123`
+| Email | Password |
+|-------|----------|
+| `provider1@test.com` | `test123` |
+| `provider2@test.com` | `test123` |
 
-### Administrator
+---
 
-  Email            Password
-  ---------------- ------------
-  admin@test.com   `admin123`
+## 👨‍💼 Administrator Account
 
-> Update these credentials if they differ from your deployed system.
+| Email | Password |
+|-------|----------|
+| `admin@test.com` | `admin123` |
+
+> **Note:** These accounts are provided for demonstration and testing purposes only. Passwords have been simplified for evaluation.
+
+> Update these credentials if they differ from your deployed system.  
+> To open admin portal: Frontend_url/admin
 
 ------------------------------------------------------------------------
 
