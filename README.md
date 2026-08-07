@@ -20,7 +20,7 @@
 
 ## Project Overview
 
-The **Travel Management System (AITMS)** is a centralized web
+The **Travel Management System (TMS)** is a centralized web
 application that simplifies travel planning by integrating hotel
 booking, transportation booking, and AI-powered itinerary generation
 into one platform.
